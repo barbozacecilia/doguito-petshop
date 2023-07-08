@@ -32,9 +32,17 @@ const createUser = (nameUser, emailUser) =>{
     })
     }
 
+    const deleteUser =(id) =>{
+        console.log("delete ", id)
+    return fetch(`http://localhost:3000/perfil/${id}`, {
+            method: "DELETE",
+        })
+    }
+
 export const clientServices = {
     customerList,
     createUser,
+    deleteUser,
 }
  
 

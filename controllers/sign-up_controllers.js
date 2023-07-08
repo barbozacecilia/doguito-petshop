@@ -6,9 +6,8 @@ formSignUp.addEventListener("submit", (event)=>{
     event.preventDefault()
     const nameUser = document.querySelector("[data-name]").value;
     const emailUser  = document.querySelector("[data-email]").value;
-    console.log(nameUser, '-', emailUser)
     
-    clientServices.createUser(nameUser, emailUser).then((response) =>{
+    clientServices.createUser(nameUser, emailUser).then(() =>{
         window.location.href = "/screens/registro_completado.html"
 
     }).catch((error) => console.log(error))
