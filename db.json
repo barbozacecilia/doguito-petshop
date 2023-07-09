@@ -9,6 +9,11 @@
       "nameUser": "test 1",
       "emailUser": "test1@test.com",
       "id": "75125360-8c28-48e1-9979-1a9d81380779"
+    },
+    {
+      "nameUser": "test2",
+      "emailUser": "test2@test.com",
+      "id": "32c05950-5584-4300-b20d-6e1f508fe3f1"
     }
   ]
 }

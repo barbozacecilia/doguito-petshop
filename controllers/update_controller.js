@@ -2,7 +2,7 @@ import { clientServices } from "../service/cliente-service.js";
 
 const formUpdate = document.querySelector("[data-form]")
 
-const getUserInf = ()=> {
+const getUserInf = async()=> {
     const url = new URL(window.location);
     const id = url.searchParams.get("id")
 
@@ -12,12 +12,21 @@ const getUserInf = ()=> {
 
     const nameUser = document.querySelector("[data-nombre]")
     const emailUser = document.querySelector("[data-email]")
-
-    clientServices.detailUser(id).then(perfil => {
-        nameUser.value = perfil.nameUser;
-        emailUser.value = perfil.emailUser;
-    })
+    try{
+        const perfil =await clientServices.detailUser(id)
+        if(perfil.nameUser && perfil.emailUser){
+            nameUser.value = perfil.nameUser;
+            emailUser.value = perfil.emailUser;
+        }else{
+            throw new Error()
+        }
+        
+    }catch(e){
+        window.location.href = "/screens/error.html"
+    }
+    
 }
+
 getUserInf()
 
 
