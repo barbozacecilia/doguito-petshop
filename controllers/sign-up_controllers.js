@@ -10,5 +10,5 @@ formSignUp.addEventListener("submit", (event)=>{
     clientServices.createUser(nameUser, emailUser).then(() =>{
         window.location.href = "/screens/registro_completado.html"
 
-    }).catch((error) => console.log(error))
+    }).catch((err) => console.log(err))
 })

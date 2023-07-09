@@ -1,6 +1,6 @@
 // Fetch API
 
-const customerList =()=> fetch("http://localhost:3000/perfil").then((response)=> response.json());
+const customerList = () => fetch("http://localhost:3000/perfil").then((response) => response.json());
 
 //promise
 // const customerList = ()=>{
@@ -29,21 +29,37 @@ const createUser = (nameUser, emailUser) =>{
             "Content-Type": "application/json",
         },
         body: JSON.stringify({nameUser, emailUser, id: uuid.v4() }),
-    })
-    }
+    });
+    };
 
     const deleteUser =(id) =>{
-        console.log("delete ", id)
-    return fetch(`http://localhost:3000/perfil/${id}`, {
+        return fetch(`http://localhost:3000/perfil/${id}`, {
             method: "DELETE",
-        })
+        });
+    };
+
+    const detailUser =(id) =>{
+        return fetch(`http://localhost:3000/perfil/${id}`).then((response)=>response.json())
+    };
+
+    const updateUser =(nameUser, emailUser, id) =>{
+        return fetch(`http://localhost:3000/perfil/${id}`,{
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            }, 
+            body: JSON.stringify({nameUser, emailUser})
+        }).then((response)=> response)
+        .catch((error)=>console.log(error))
     }
 
 export const clientServices = {
     customerList,
     createUser,
     deleteUser,
-}
+    detailUser,
+    updateUser,
+};
  
 
 
